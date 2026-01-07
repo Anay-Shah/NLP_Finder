@@ -4,10 +4,6 @@
 
 NLP_Finder is a cross-platform desktop application that enables you to perform natural language searches over your local files using a completely local AI model. No cloud services, no external APIs—everything runs on your machine.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Python](https://img.shields.io/badge/python-3.8+-green)
-![License](https://img.shields.io/badge/license-MIT-orange)
-
 ---
 
 ## 🎯 Features
@@ -245,58 +241,6 @@ SIMILARITY_THRESHOLD = 0.3    # Minimum similarity score (0-1)
 
 ---
 
-## 🐛 Troubleshooting
-
-### Ollama Connection Error
-
-**Problem**: "Ollama is not running or not accessible"
-
-**Solutions**:
-1. Make sure Ollama is running: `ollama serve`
-2. Check that Ollama is accessible: Visit `http://localhost:11434` in your browser
-3. Verify the model is installed: `ollama list`
-4. Pull the model if missing: `ollama pull nomic-embed-text`
-
-### Backend Connection Error
-
-**Problem**: Frontend can't connect to backend
-
-**Solutions**:
-1. Ensure the backend is running on port 8000
-2. Check for firewall or antivirus blocking
-3. Verify the proxy settings in `frontend/vite.config.js`
-
-### No Files Indexed
-
-**Problem**: Indexing completes but no files are found
-
-**Solutions**:
-1. Check that the directory path is correct and absolute
-2. Verify the directory contains supported file types
-3. Check file permissions - ensure files are readable
-4. Look for error messages in the backend terminal
-
-### Search Returns No Results
-
-**Problem**: Search completes but finds nothing
-
-**Solutions**:
-1. Try different search queries or keywords
-2. Check that files are actually indexed (see status bar)
-3. Lower the `SIMILARITY_THRESHOLD` in `config.py`
-4. Verify Ollama is generating embeddings correctly
-
-### PDF Files Not Working
-
-**Problem**: PDF files are skipped or not readable
-
-**Solutions**:
-1. Ensure PDFs are text-based (not scanned images)
-2. Check if PyPDF2 can read the file
-3. Try re-indexing after updating PyPDF2
-
----
-
 ## 🔒 Privacy & Security
 
 - ✅ **100% Local** - All AI processing happens on your machine
@@ -332,88 +276,6 @@ SIMILARITY_THRESHOLD = 0.3    # Minimum similarity score (0-1)
 
 ---
 
-## 🚧 Known Limitations
-
-- **Binary files** (images, videos, executables) are not supported
-- **Very large files** (>10MB default) are skipped
-- **Scanned PDFs** without text layers cannot be indexed
-- **Performance** depends on your machine's CPU/GPU capabilities
-- **Accuracy** depends on the quality of Ollama's embedding model
-
----
-
-## 🛣️ Roadmap
-
-Potential future enhancements:
-
-- [ ] Incremental indexing (re-index only changed files)
-- [ ] Multiple index management (switch between projects)
-- [ ] Query expansion using LLM
-- [ ] Better snippet extraction with LLM
-- [ ] File content summarization
-- [ ] Export search results
-- [ ] Keyboard shortcuts
-- [ ] GPU acceleration for embeddings
-- [ ] OCR support for scanned PDFs
-- [ ] Advanced filters (file type, date range, size)
-
----
-
-## 📝 Project Structure
-
-```
-NLP_Finder/
-├── backend/
-│   ├── main.py              # FastAPI application
-│   ├── config.py            # Configuration settings
-│   ├── indexer.py           # File indexing and FAISS integration
-│   ├── requirements.txt     # Python dependencies
-│   ├── utils/
-│   │   ├── ollama_client.py # Ollama API client
-│   │   └── file_processor.py# File text extraction
-│   └── data/                # Index storage (generated)
-│       ├── faiss_index/
-│       └── metadata/
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx          # Main application component
-│   │   ├── api.js           # API client
-│   │   ├── components/      # React components
-│   │   │   ├── DirectorySelector.jsx
-│   │   │   ├── SearchInterface.jsx
-│   │   │   ├── SearchResults.jsx
-│   │   │   ├── FilePreview.jsx
-│   │   │   └── StatusBar.jsx
-│   │   └── main.jsx         # React entry point
-│   ├── package.json         # Node dependencies
-│   ├── vite.config.js       # Vite configuration
-│   └── index.html           # HTML template
-└── README.md               # This file
-```
-
----
-
-## 🤝 Contributing
-
-This is a personal project, but contributions, issues, and feature requests are welcome!
-
----
-
-## 📄 License
-
-MIT License - feel free to use this project for personal or commercial purposes.
-
----
-
-## 🙏 Acknowledgments
-
-- **Ollama** - For making local LLM inference accessible
-- **FAISS** - For fast vector similarity search
-- **FastAPI** - For the excellent async web framework
-- **React** - For the powerful UI library
-
----
-
 ## 💡 Tips for Best Results
 
 1. **Be Specific**: More specific queries yield better results
@@ -432,15 +294,6 @@ MIT License - feel free to use this project for personal or commercial purposes.
    - Slower: `C:\Users`
 
 5. **Keep Files Updated**: Re-index after major changes to your codebase
-
----
-
-## 📞 Support
-
-For issues or questions:
-1. Check the **Troubleshooting** section above
-2. Review the **Ollama documentation**: https://ollama.ai/docs
-3. Check Python and Node.js are correctly installed
 
 ---
 
