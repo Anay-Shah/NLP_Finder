@@ -41,9 +41,12 @@ dist/
 *.swo
 *~
 
-# Data files
-data/faiss_index/
-data/metadata/
+# Data files with personal information
+backend/data/faiss_index/*.index
+backend/data/metadata/*.json
+!backend/data/metadata/default.json.example
+!backend/data/faiss_index/.gitkeep
+!backend/data/metadata/.gitkeep
 *.db
 *.sqlite
 
